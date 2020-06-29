@@ -298,9 +298,6 @@ C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\bin\Debug\netcor
 C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.csprojAssemblyReference.cache
 C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.AssemblyInfoInputs.cache
 C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.AssemblyInfo.cs
-C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.csproj.CoreCompileInputs.cache
-C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.MvcApplicationPartsAssemblyInfo.cs
-C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.MvcApplicationPartsAssemblyInfo.cache
 C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.RazorTargetAssemblyInfo.cache
 C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.csproj.CopyComplete
 C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\staticwebassets\TodoApi.StaticWebAssets.Manifest.cache
@@ -309,3 +306,15 @@ C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcor
 C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.xml
 C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.pdb
 C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.genruntimeconfig.cache
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\bin\Debug\netcoreapp3.1\Serilog.dll
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\bin\Debug\netcoreapp3.1\Serilog.AspNetCore.dll
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\bin\Debug\netcoreapp3.1\Serilog.Extensions.Hosting.dll
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.dll
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\bin\Debug\netcoreapp3.1\Serilog.Formatting.Compact.dll
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\bin\Debug\netcoreapp3.1\Serilog.Settings.Configuration.dll
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\bin\Debug\netcoreapp3.1\Serilog.Sinks.Console.dll
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\bin\Debug\netcoreapp3.1\Serilog.Sinks.Debug.dll
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.csproj.CoreCompileInputs.cache
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.MvcApplicationPartsAssemblyInfo.cs
+C:\GettingStartedDotNetCoreApi3_1\.Net_Core_Api_Getting_Started\obj\Debug\netcoreapp3.1\TodoApi.MvcApplicationPartsAssemblyInfo.cache

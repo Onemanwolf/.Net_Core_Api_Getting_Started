@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TodoApi.Models;
+using Serilog;
+using Serilog.Events;
 
 namespace TodoApi
 {
@@ -15,9 +17,34 @@ namespace TodoApi
     {
         public static void Main(string[] args)
         {
-           var host = CreateHostBuilder(args).Build();
-            CreateDbIfNotExists(host);
-            host.Run();
+
+            //add logging with Serilog
+            Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .CreateLogger();
+
+
+            try 
+            {
+                Log.Information("Starting web host");
+                var host = CreateHostBuilder(args).Build();
+                CreateDbIfNotExists(host);
+                host.Run();
+              
+
+            }
+            catch (Exception ex) 
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+               
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
 
         }
 
@@ -43,6 +70,7 @@ namespace TodoApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog() // <--- add this line
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

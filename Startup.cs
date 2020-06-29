@@ -17,6 +17,7 @@ using System.Reflection;
 using System.IO;
 using TodoApi.Repository;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Serilog;
 
 namespace TodoApi
 {
@@ -35,6 +36,9 @@ namespace TodoApi
 
             services.AddDbContext<TodoContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("TodoContext")));
+
+
+
             services.TryAddScoped<IRepository<TodoItem>, TodoRepository<TodoItem>>();
 
 
@@ -75,7 +79,7 @@ namespace TodoApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSerilogRequestLogging();
             app.UseHttpsRedirection();
             app.UseSwagger(option => { option.SerializeAsV2 = true; });
             app.UseRouting();
