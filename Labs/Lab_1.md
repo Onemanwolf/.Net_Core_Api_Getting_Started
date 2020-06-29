@@ -10,7 +10,7 @@ In the Create a new ASP.NET Core Web Application dialog, confirm that .NET Core 
 3. Name the project TodoApi and click Create.
 4. In the Create a new ASP.NET Core Web Application dialog, confirm that .NET Core and ASP.NET Core 3.1 are selected. Select the API template and click Create.
 
-![alt text](../labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
 
 ## Test the Api
 
@@ -88,7 +88,7 @@ The database context is the main class that coordinates Entity Framework functio
 4. Select the Project check box in the right pane and then select Install.
 5. Use the preceding instructions to add the Microsoft.EntityFrameworkCore.InMemory NuGet package.
 
-![alt text](../labs/images/InstallEntityFrameWork.png?raw=true 'Request Pipeline')
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/InstallEntityFrameWork.png?raw=true 'Request Pipeline')
 
 ## Add the TodoContext database context
 
@@ -250,7 +250,7 @@ The CreatedAtAction method:
 
 7. Select Send
 
-![alt text](../labs/images/Postman_Post_Exp_1.png?raw=true 'Request Pipeline')
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Postman_Post_Exp_1.png?raw=true 'Request Pipeline')
 
 ### Test the location header URI
 
@@ -258,7 +258,7 @@ The CreatedAtAction method:
 
 2. Copy the Location header value:
 
-![alt text](../labs/images/Postman_Location_header.png?raw=true 'Request Pipeline')
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Postman_Location_header.png?raw=true 'Request Pipeline')
 
 3. Set the method to GET.
 
@@ -406,7 +406,7 @@ Update the to-do item that has ID = 1 and set its name to "feed fish":
 
 The following image shows the Postman update:
 
-![alt text](../labs/images/Postmand_Put.png?raw=true 'Request Pipeline')
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Postmand_Put.png?raw=true 'Request Pipeline')
 
 ## The DeleteTodoItem method
 
@@ -698,14 +698,14 @@ namespace ContosoUniversity
 
 - You should see the below results with a Status code of 201 Created
 
-![alt text](../labs/images/Postman_Post_Exp_2.png?raw=true 'Request Pipeline')
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Postman_Post_Exp_2.png?raw=true 'Request Pipeline')
 
 - Now lets see if we can retrive the post from the Sql database.
 
   1. Create a new Request in Postman select Get and paste in this URI `http://localhost:4300/api/TodoItems`
   2. Select Send.
 
-  ![alt text](../labs/images/Postman_Get_Exp_2.png?raw=true 'Request Pipeline')
+  ![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Postman_Get_Exp_2.png?raw=true 'Request Pipeline')
 
 You should see the above 200 Ok status code with our newly created todo in Sql.
 
@@ -968,6 +968,6 @@ namespace TodoApi.Controllers
 
 Now Lets test out our work using the put post and delete both Get by Id and Get all Items in PostMan.
 
-![alt text](../labs/images/Postman_Get_Exp_2.png?raw=true 'Request Pipeline')
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Postman_Get_Exp_2.png?raw=true 'Request Pipeline')
 
 [Reference Doc](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.0&tabs=windows#the-startup-class)
