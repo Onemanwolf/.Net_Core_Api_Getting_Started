@@ -581,7 +581,9 @@ Update the TodoItemsController to use TodoItemDTO:
 
 Verify you can't post or get the secret field.
 
-## Refactor for Repository Pattern
+## Dependency Injection
+
+### **Refactor for Repository Pattern**
 
 1. Add Connection String to the `appsetting.json` file.
 
@@ -842,7 +844,26 @@ namespace TodoApi.Repository
 }
 ```
 
+Now we must use .Net Core Dependency Injection.
+
+We will neee to update our Startup.cs with the below code
+
+Add the using statements:
+
+```C#
+using TodoApi.Repository;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+```
+
+now in the ConfigureServices method we will need to add:
+
+```C#
+ services.TryAddScoped<IRepository<TodoItem>, TodoRepository<TodoItem>>();
+```
+
 Finally lets clean up all the database code and replace with our Respository by Updating our TodoItemsController.
+
+Notice we replaced `_context` with `_repo` context is now implemented in our Respository.
 
 ```C#
 using Microsoft.AspNetCore.Mvc;
