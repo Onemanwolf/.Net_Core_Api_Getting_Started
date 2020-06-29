@@ -1,9 +1,6 @@
-From the File menu, select New > Project.
-Select the ASP.NET Core Web Application template and click Next.
-Name the project TodoApi and click Create.
-In the Create a new ASP.NET Core Web Application dialog, confirm that .NET Core and ASP.NET Core 3.1 are selected. Select the API template and click Create.
-
 # Getting Started
+
+[Asp.Net Core Docs](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio)
 
 1. From the File menu, select New > Project.
 2. Select the ASP.NET Core Web Application template and click Next.
@@ -991,4 +988,4 @@ Now Lets test out our work using the put post and delete both Get by Id and Get 
 
 ![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Postman_Get_Exp_2.png?raw=true 'Request Pipeline')
 
-[Reference Doc](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.0&tabs=windows#the-startup-class)
+[EF Core Docs](https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-3.1&tabs=visual-studio)
