@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\timot\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj": {}
+    "C:\\GettingStartedDotNetCoreApi3_1\\.Net_Core_Api_Getting_Started\\TodoApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\timot\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj": {
+    "C:\\GettingStartedDotNetCoreApi3_1\\.Net_Core_Api_Getting_Started\\TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\timot\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj",
+        "projectUniqueName": "C:\\GettingStartedDotNetCoreApi3_1\\.Net_Core_Api_Getting_Started\\TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "C:\\Users\\timot\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj",
-        "packagesPath": "C:\\Users\\timot\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\timot\\source\\repos\\TodoApi\\TodoApi\\obj\\",
+        "projectPath": "C:\\GettingStartedDotNetCoreApi3_1\\.Net_Core_Api_Getting_Started\\TodoApi.csproj",
+        "packagesPath": "C:\\Users\\tioleson\\.nuget\\packages\\",
+        "outputPath": "C:\\GettingStartedDotNetCoreApi3_1\\.Net_Core_Api_Getting_Started\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\timot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tioleson\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -27,7 +27,9 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Users\\tioleson\\source\\repos\\FoundationUtilities.API": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.hangfire.io/nuget/hangfire-pro": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -92,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

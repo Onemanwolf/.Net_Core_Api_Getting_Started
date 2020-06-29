@@ -15,7 +15,8 @@ using TodoApi.Models;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
-
+using TodoApi.Repository;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace TodoApi
 {
@@ -32,8 +33,11 @@ namespace TodoApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<TodoContext>(options => 
-            options.UseSqlServer("@Server=.;Database=Todos;IntegratedSecurity=True"));
+            services.AddDbContext<TodoContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("TodoContext")));
+            services.TryAddScoped<IRepository<TodoItem>, TodoRepository<TodoItem>>();
+
+
             services.AddControllers();
             services.AddSwaggerGen( options => {options.SwaggerDoc( "v1", new OpenApiInfo {
 
