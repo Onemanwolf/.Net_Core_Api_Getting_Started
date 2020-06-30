@@ -342,7 +342,7 @@ public ActionResult<TodoItem> Create(TodoItem item)
 
 Notice the UI enhancements with these additional comments:
 
-![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Swagger_Delete_UI.png?raw=true 'Request Pipeline')
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Swagger_Create_example.png?raw=true 'Request Pipeline')
 
 # Logging
 
