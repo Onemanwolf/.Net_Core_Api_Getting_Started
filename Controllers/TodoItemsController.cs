@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -91,6 +92,7 @@ namespace TodoApi.Controllers
         ///       
         ///        "name": "Item1",
         ///        "isComplete": true
+        ///        "
         ///     }
         ///
         /// </remarks>
@@ -99,7 +101,9 @@ namespace TodoApi.Controllers
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response>         
         [HttpPost]
-        public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<TodoItem>> Create(TodoItem todoItem)
         {
             
            await _repo.InsertAsync(todoItem);
