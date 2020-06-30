@@ -1,5 +1,17 @@
 # Swagger
 
+There are three main components to Swashbuckle:
+
+- Swashbuckle.AspNetCore.Swagger: a Swagger object model and middleware to expose SwaggerDocument objects as JSON endpoints.
+
+- Swashbuckle.AspNetCore.SwaggerGen: a Swagger generator that builds SwaggerDocument objects directly from your routes, controllers, and models. It's typically combined with the Swagger endpoint middleware to automatically expose Swagger JSON.
+
+- Swashbuckle.AspNetCore.SwaggerUI: an embedded version of the Swagger UI tool. It interprets Swagger JSON to build a rich, customizable experience for describing the web API functionality. It includes built-in test harnesses for the public methods.
+
+# Package installation
+
+Swashbuckle can be added with the following approaches:
+
 - From the Package Manager Console window:
 
   - Go to View > Other Windows > Package Manager Console
@@ -344,6 +356,166 @@ Notice the UI enhancements with these additional comments:
 
 ![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Swagger_Create_example.png?raw=true 'Request Pipeline')
 
+## Data annotations
+
+Mark the model with attributes, found in the System.ComponentModel.DataAnnotations namespace, to help drive the Swagger UI components.
+
+Add the [Required] attribute to the Name property of the TodoItem class:
+
+```C#
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace TodoApi.Models
+{
+    public class TodoItem : BaseEntity
+    {
+
+
+        [Required]
+        public string Name { get; set; }
+
+        [DefaultValue(false)]
+        public bool IsComplete { get; set; }
+    }
+}
+
+```
+
+The presence of this attribute changes the UI behavior and alters the underlying JSON schema:
+
+```Json
+"definitions": {
+    "TodoItem": {
+        "required": [
+            "name"
+        ],
+        "type": "object",
+        "properties": {
+            "id": {
+                "format": "int64",
+                "type": "integer"
+            },
+            "name": {
+                "type": "string"
+            },
+            "isComplete": {
+                "default": false,
+                "type": "boolean"
+            }
+        }
+    }
+},
+```
+
+Add the `[Produces("application/json")]` attribute to the API controller. Its purpose is to declare that the controller's actions support a response content type of application/json:
+
+```C#
+[Produces("application/json")]
+[Route("api/[controller]")]
+[ApiController]
+public class TodoController : ControllerBase
+{
+    private readonly TodoContext _context;
+```
+The **Response Content Type** drop-down selects this content type as the default for the controller's GET actions:
+
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Swagger_Application_Json.png?raw=true 'Request Pipeline')
+
+As the usage of data annotations in the web API increases, the UI and API help pages become more descriptive and useful.
+
+### Describe response types
+
+Developers consuming a web API are most concerned with what's returned—specifically response types and error codes (if not standard). The response types and error codes are denoted in the XML comments and data annotations.
+
+The Create action returns an HTTP 201 status code on success. An HTTP 400 status code is returned when the posted request body is null. Without proper documentation in the Swagger UI, the consumer lacks knowledge of these expected outcomes. Fix that problem by adding the highlighted lines in the following example:
+
+```C#
+/// <summary>
+/// Creates a TodoItem.
+/// </summary>
+/// <remarks>
+/// Sample request:
+///
+///     POST /Todo
+///     {
+///        "id": 1,
+///        "name": "Item1",
+///        "isComplete": true
+///     }
+///
+/// </remarks>
+/// <param name="item"></param>
+/// <returns>A newly created TodoItem</returns>
+/// <response code="201">Returns the newly created item</response>
+/// <response code="400">If the item is null</response>
+[HttpPost]
+[ProducesResponseType(StatusCodes.Status201Created)]
+[ProducesResponseType(StatusCodes.Status400BadRequest)]
+public ActionResult<TodoItem> Create(TodoItem item)
+{
+    _context.TodoItems.Add(item);
+    _context.SaveChanges();
+
+    return CreatedAtRoute("GetTodo", new { id = item.Id }, item);
+}
+```
+The Swagger UI now clearly documents the expected HTTP response codes:
+
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Swagger_Post_Responses.png?raw=true 'Request Pipeline')
+
+In ASP.NET Core 2.2 or later, conventions can be used as an alternative to explicitly decorating individual actions with [ProducesResponseType]. For more information, see Use web API conventions.
+
+To support the [ProducesResponseType] decoration, the Swashbuckle.AspNetCore.Annotations package offers extensions to enable and enrich the response, schema, and parameter metadata.
+
+## Customize the UI
+
+The default UI is both functional and presentable. However, API documentation pages should represent your brand or theme. Branding the Swashbuckle components requires adding the resources to serve static files and building the folder structure to host those files.
+
+If targeting .NET Framework or .NET Core 1.x, add the Microsoft.AspNetCore.StaticFiles NuGet package to the project:
+
+```XML
+<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
+```
+
+The preceding NuGet package is already installed if targeting .NET Core 2.x and using the metapackage.
+
+Enable Static File Middleware:
+
+```C#
+public void Configure(IApplicationBuilder app)
+{
+    app.UseStaticFiles();
+
+    // Enable middleware to serve generated Swagger as a JSON endpoint.
+    app.UseSwagger();
+
+    // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+    // specifying the Swagger JSON endpoint.
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    });
+
+    app.UseRouting();
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllers();
+    });
+}
+```
+
+To inject additional CSS stylesheets, add them to the project's wwwroot folder and specify the relative path in the middleware options:
+
+```C#
+app.UseSwaggerUI(c =>
+{
+     c.InjectStylesheet("/swagger-ui/custom.css");
+}
+```
+
+[Swagger Docs](https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-3.1&tabs=visual-studio)
+
 # Logging
 
 First, install the Serilog.AspNetCore NuGet package into your app.
@@ -407,9 +579,4 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 [Serilog Docs](https://github.com/serilog/serilog-aspnetcore)
 
-1. From the File menu, select New > Project.
-2. Select the ASP.NET Core Web Application template and click Next.
-3. Name the project TodoApi and click Create.
-4. In the Create a new ASP.NET Core Web Application dialog, confirm that .NET Core and ASP.NET Core 3.1 are selected. Select the API template and click Create.
 
-![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
