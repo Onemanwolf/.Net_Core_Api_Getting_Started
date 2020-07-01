@@ -91,8 +91,8 @@ namespace TodoApi.Controllers
         ///     {
         ///       
         ///        "name": "Item1",
-        ///        "isComplete": true
-        ///        "
+        ///        "isComplete": true,
+        ///        "id": 0,  Set to zero EF assigns Id
         ///     }
         ///
         /// </remarks>
