@@ -468,9 +468,9 @@ In ASP.NET Core 2.2 or later, conventions can be used as an alternative to expli
 
 To support the [ProducesResponseType] decoration, the Swashbuckle.AspNetCore.Annotations package offers extensions to enable and enrich the response, schema, and parameter metadata.
 
-## Customize the UI
+## Customize the UI (Optional on your own exersise)
 
-The default UI is both functional and presentable. However, API documentation pages should represent your brand or theme. Branding the Swashbuckle components requires adding the resources to serve static files and building the folder structure to host those files.
+The default UI is both functional and presentable. However, API documentation pages should represent your brand or theme. Branding the Swashbuckle components requires adding the resources to [serve static files](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-3.1) and building the folder structure to host those files.
 
 If targeting .NET Framework or .NET Core 1.x, add the Microsoft.AspNetCore.StaticFiles NuGet package to the project:
 
@@ -479,6 +479,8 @@ If targeting .NET Framework or .NET Core 1.x, add the Microsoft.AspNetCore.Stati
 ```
 
 The preceding NuGet package is already installed if targeting .NET Core 2.x and using the metapackage.
+
+
 
 Enable Static File Middleware:
 
@@ -504,6 +506,9 @@ public void Configure(IApplicationBuilder app)
     });
 }
 ```
+
+
+[Static Files Docs](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-3.1)
 
 To inject additional CSS stylesheets, add them to the project's wwwroot folder and specify the relative path in the middleware options:
 

@@ -738,6 +738,17 @@ namespace TodoApi.Repository
 
 ```
 
+Add BaseEntity to the TodoItemDTO
+
+```C#
+public class TodoItemDTO : BaseEntity
+{
+
+    public string Name { get; set; }
+    public bool IsComplete { get; set; }
+}
+```
+
 We will generics to also supprt greatly flexablity and assist in Unit testing.
 
 Right click on the IRepository folder and add a new interface called IRepository.cs
@@ -855,7 +866,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 now in the ConfigureServices method we will need to add:
 
 ```C#
- services.TryAddScoped<IRepository<TodoItem>, TodoRepository<TodoItem>>();
+ services.TryAddScoped<IRepository<TodoItemDTO>, TodoRepository<TodoItemDTO>>();
 ```
 
 Finally lets clean up all the database code and replace with our Respository by Updating our TodoItemsController.
@@ -877,16 +888,16 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly IRepository<TodoItem> _repo;
+        private readonly IRepository<TodoItemDTO> _repo;
 
-        public TodoItemsController(IRepository<TodoItem> repo)
+        public TodoItemsController(IRepository<TodoItemDTO> repo)
         {
             _repo = repo;
         }
 
         // GET: api/TodoItems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
 
             return await _repo.GetAsync();
@@ -894,7 +905,7 @@ namespace TodoApi.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItem>> GetTodoItem(long id)
+        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
 
             var todoItem = await _repo.GetAsync(id);
@@ -909,7 +920,7 @@ namespace TodoApi.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTodoItem(long id, TodoItem todoItem)
+        public async Task<IActionResult> PutTodoItem(long id, TodoItemDTO todoItem)
         {
             if (id != todoItem.Id)
             {
@@ -940,7 +951,7 @@ namespace TodoApi.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
+        public async Task<ActionResult<TodoItemDTO>> PostTodoItem(TodoItemDTO todoItem)
         {
 
            await _repo.InsertAsync(todoItem);
@@ -950,7 +961,7 @@ namespace TodoApi.Controllers
 
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TodoItem>> DeleteTodoItem(long id)
+        public async Task<ActionResult<TodoItemDTO>> DeleteTodoItem(long id)
         {
             var todoItem = await _repo.GetAsync(id);
 
